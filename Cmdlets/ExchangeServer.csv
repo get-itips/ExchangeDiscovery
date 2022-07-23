@@ -10,7 +10,6 @@ Get-CASMailbox;GetCASMailbox;3
 Get-ClientAccessArray;GetClientAccessArray;3
 Get-ClientAccessServer;GetClientAccessServer;3
 Get-DatabaseAvailabilityGroup;GetDatabaseAvailabilityGroup;3
-Get-DatabaseAvailabilityGroupConfiguration;GetDatabaseAvailabilityGroupConfiguration;3
 Get-DlpPolicy;GetDlpPolicy;3
 Get-DomainController;GetDomainController;3
 Get-ECPVirtualDirectory;GetECPVirtualDirectory;3
@@ -33,3 +32,11 @@ Get-ActiveSyncVirtualDirectory;GetActiveSyncVirtualDirectory;3
 Get-OABVirtualDirectory;GetOABVirtualDirectory;3
 Get-OwaVirtualDirectory;GetOwaVirtualDirectory;3
 Get-PowerShellVirtualDirectory;GetPowerShellVirtualDirectory;3
+Get-OrganizationConfig;GetOrganizationConfig;3
+Get-HybridConfiguration;GetHybridConfiguration;3
+Get-RemoteDomain;GetRemoteDomain;3
+Get-OrganizationRelationshipGetOrganizationRelationship;3
+Get-AvailabilityAddressSpace;GetAvailabilityAddressSpace;3
+Get-FederationInformation;GetFederationInformation;3
+Get-AuthConfig;GetAuthConfig;3
+Get-PartnerApplication;GetPartnerApplication;3
