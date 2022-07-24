@@ -1,7 +1,7 @@
 [CmdletBinding(DefaultParameterSetName = "ExchangeDiscovery", SupportsShouldProcess)]
 param(
     [Parameter(Mandatory)]
-    [string]$Path,
+    [string]$Path
     )
 
 
