@@ -16,6 +16,8 @@ function Main
     #Connect to Exchange Online
     Connect-ExchangeOnline -ErrorAction Stop
 
+    #Create folder
+    New-Item "$Path\$FolderName" -itemType Directory
     #Start
     foreach($ExchangeOnlineCmdlet in $ExchangeOnlineCmdlets)
     {   
