@@ -5,7 +5,7 @@ A series of PowerShell scripts to gather information about Exchange Server and E
 # How it works
 The scripts read a .CSV file with the list of cmdlets to run, the cmdlets are then run and saved into XML files under a folder with this format, as an example, `C:\ExchangeDiscovery\EXO_20220725122545`
 
-Then, you can rebuild these XML files into more readable objects using `RebuildObjects.ps1`.
+Then, the script generates an HTML report with the XML files as an input.
 
 # How To Use
 
@@ -22,9 +22,8 @@ PS> .\ExchangeServerDiscovery.ps1 -Path "C:\ExchangeDiscovery\"
 PS> .\ExchangeOnlineDiscovery.ps1 -Path "C:\ExchangeDiscovery\"
 ```
 
-# Rebuild exported information into objects
-For convenience, the XML files can be loaded into objects that you can read and query inside a PowerShell window, you just have to pass this as a parameter:
+# Contributing
+Contributions are very well welcomed.
 
-```powershell
-PS> .\RebuildObjects.ps1 -Path "C:\ExchangeDiscovery\EXO_20220725122545"
-```
+# To-do
+A lot, mostly error handling and better output.
