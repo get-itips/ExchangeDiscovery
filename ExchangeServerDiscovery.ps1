@@ -1,7 +1,9 @@
 [CmdletBinding(DefaultParameterSetName = "ExchangeDiscovery", SupportsShouldProcess)]
 param(
     [Parameter(Mandatory)]
-    [string]$Path
+    [string]$Path,
+    [Parameter(Mandatory)]
+    [string]$Server
 )
 
     
@@ -13,7 +15,7 @@ function Main
     $Encoding="UTF8"
     $Runtime=(Get-Date).ToString("yyyyMMddhhmmss")
     $FolderName="EXSRV_$Runtime"
-    $ReportTitle="Exchange Server Report"
+    $ReportTitle="Exchange Server $Server Report"
     #Import cmdlets CSV file
     try{
         $ExchangeServerCmdlets=Import-Csv -Delimiter ";" -Path ".\Cmdlets\ExchangeServer.csv" -ErrorAction Stop
@@ -35,19 +37,27 @@ function Main
         Write-Warning "Failed to create output folder"
         throw $_
     }
-    finally{
-        Disconnect-ExchangeServer
-    }
+
     #Start
     foreach($ExchangeServerCmdlet in $ExchangeServerCmdlets)
     {   
         Write-Verbose "Working on cmdlet $ExchangeServerCmdlet"
         $filename=$ExchangeServerCmdlet.cmdlet+".XML"
         try{
-            (Invoke-Expression $ExchangeServerCmdlet.cmdlet) | Export-Clixml -Path "$Path\$FolderName\$filename" -Encoding $Encoding -Depth $ExchangeServerCmdlet.depth -ErrorAction Stop
+            if($ExchangeServerCmdlet.parameter -eq "org"){
+                (Invoke-Expression $ExchangeServerCmdlet.cmdlet) | Export-Clixml -Path "$Path\$FolderName\$filename" -Encoding $Encoding -Depth $ExchangeServerCmdlet.depth -ErrorAction Stop
+
+            }
+            else
+            {
+                $cmdlet=$ExchangeServerCmdlet.cmdlet
+                $cmdletToRun="$cmdlet -Server $Server"
+                (Invoke-Expression $cmdletToRun) | Export-Clixml -Path "$Path\$FolderName\$filename" -Encoding $Encoding -Depth $ExchangeServerCmdlet.depth -ErrorAction Stop
+            }
         }
         catch{
-            Write-Warning "Failed to properly run $ExchangeServerCmdlet.cmdlet"
+            $cmdletError=$ExchangeServerCmdlet.cmdlet
+            Write-Warning "Failed to properly run $cmdletError"
         }
 
 

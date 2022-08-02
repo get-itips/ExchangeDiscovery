@@ -41,9 +41,7 @@ function Main
         Write-Warning "Failed to create output folder"
         throw $_
     }
-    finally{
-        Disconnect-ExchangeOnline
-    }
+
     #Start
     foreach($ExchangeOnlineCmdlet in $ExchangeOnlineCmdlets)
     {   
