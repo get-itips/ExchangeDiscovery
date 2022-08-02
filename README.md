@@ -13,7 +13,7 @@ Then, the script generates an HTML report with the XML files as an input.
 ## Exchange Server
 
 ```powershell
-PS> .\ExchangeServerDiscovery.ps1 -Path "C:\ExchangeDiscovery\"
+PS> .\ExchangeServerDiscovery.ps1 -Path "C:\ExchangeDiscovery\" -Server EXCH01
 ```
 
 ## Exchange Online
