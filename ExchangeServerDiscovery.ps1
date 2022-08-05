@@ -30,8 +30,9 @@ function Main
 
 
     #Create folder
+    $folder
     try{
-        New-Item -Path $Path -Name $FolderName -itemType Directory -ErrorAction Stop
+        $folder=New-Item -Path $Path -Name $FolderName -itemType Directory -ErrorAction Stop
     }
     catch {
         Write-Warning "Failed to create output folder"
@@ -63,7 +64,7 @@ function Main
 
     }
 
-    BuildHTMLReport -XMLPath "$Path$FolderName" -ReportTitle $ReportTitle
+    BuildHTMLReport -XMLPath $folder.FullName -ReportTitle $ReportTitle
     
 }
 Main

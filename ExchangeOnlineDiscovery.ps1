@@ -32,10 +32,11 @@ function Main
         Write-Warning "Failed to connect to Exchange Online"
         throw $_
     }
-
+    
     #Create folder
+    $folder
     try{
-        New-Item -Path $Path -Name $FolderName -itemType Directory -ErrorAction Stop
+        $folder=New-Item -Path $Path -Name $FolderName -itemType Directory -ErrorAction Stop
     }
     catch {
         Write-Warning "Failed to create output folder"
@@ -56,8 +57,8 @@ function Main
 
 
     }
-
-    BuildHTMLReport -XMLPath "$Path$FolderName" -ReportTitle $ReportTitle
+    Disconnect-ExchangeOnline -Confirm:$false
+    BuildHTMLReport -XMLPath $folder.FullName -ReportTitle $ReportTitle
     
 }
 Main
