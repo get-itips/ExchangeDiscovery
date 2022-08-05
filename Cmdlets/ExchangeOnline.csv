@@ -2,6 +2,7 @@ cmdlet;depth
 Get-OrganizationConfig;3
 Get-OnPremisesOrganization;3
 Get-AcceptedDomain;3
+Get-RemoteDomain;3
 Get-MigrationEndpoint;3
 Get-OrganizationRelationship;3
 Get-FederationTrust;3
@@ -9,3 +10,4 @@ Get-OutboundConnector;3
 Get-InboundConnector;3
 Get-IntraOrganizationConfiguration;G3
 Get-IntraOrganizationConnector;3
+Get-AddressBookPolicy;3
