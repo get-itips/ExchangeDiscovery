@@ -11,3 +11,4 @@ Get-InboundConnector;3
 Get-IntraOrganizationConfiguration;G3
 Get-IntraOrganizationConnector;3
 Get-AddressBookPolicy;3
+Get-RetentionPolicy;3

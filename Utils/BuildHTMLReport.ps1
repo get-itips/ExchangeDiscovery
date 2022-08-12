@@ -62,7 +62,7 @@
         $tables+=,"<H1>$($ReportTitle)</H1>"
         $tables+=,"<p id='CreationDate'>Report Generation Time: $(Get-Date)</p>"
         $pattern=".+?(?=.XML)"
-        $files=Get-ChildItem -Path $XMLPath
+        $files=Get-ChildItem -Path $XMLPath | Sort-Object CreationTime
         $folder=Get-Item -Path $XMLPath
         $HTMLFile=$folder.FullName+"\Report.html"
 
@@ -73,7 +73,7 @@
             Write-Host $file.Name
             $objectName=[regex]::Matches($file.name, $pattern).Value
 
-            $tables+=,(Import-Clixml -Path $file.fullname | ConvertTo-Html -Fragment -PreContent "<h2>$objectName</h2>")
+            $tables+=,(Import-Clixml -Path $file.fullname | ConvertTo-Html -As list -Fragment -PreContent "<h2>$objectName</h2>") 
         }
         ConvertTo-Html -Body $(foreach ($table in $tables){$table}) -Head $header -Title $ReportTitle | Out-File $HTMLFile
         Write-Host ""
