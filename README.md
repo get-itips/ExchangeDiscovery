@@ -22,6 +22,12 @@ PS> .\ExchangeServerDiscovery.ps1 -Path "C:\ExchangeDiscovery\" -Server EXCH01
 PS> .\ExchangeOnlineDiscovery.ps1 -Path "C:\ExchangeDiscovery\"
 ```
 
+## Exchange Online Authentication Policies Report
+
+```powershell
+PS> .\Get-AuthPoliciesReport.ps1 -Path "C:\ExchangeDiscovery\"
+```
+
 # Contributing
 Contributions are very well welcomed.
 
